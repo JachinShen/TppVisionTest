@@ -1,0 +1,15 @@
+PROJECT(HistImg)         
+
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+if(COMMAND cmake_policy)
+      cmake_policy(SET CMP0003 NEW)
+endif(COMMAND cmake_policy)
+FIND_PACKAGE( OpenCV REQUIRED )
+SET(CMAKE_BUILD_TYPE "Debug") 
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+# Declare the target (an executable)
+ADD_EXECUTABLE(main  
+    ${PROJECT_SOURCE_DIR}/src/main.cpp)
+TARGET_LINK_LIBRARIES(main ${OpenCV_LIBS})
+#MESSAGE(STATUS "OpenCV_LIBS: ${OpenCV_LIBS}")     
